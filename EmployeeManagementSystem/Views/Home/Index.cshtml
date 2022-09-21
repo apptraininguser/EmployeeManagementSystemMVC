@@ -6,3 +6,11 @@
     <h1 class="display-4">Welcome</h1>
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
 </div>
+
+@model EmployeeManagementSystem.Models.EmployeeViewModel
+
+@{ 
+    var employee = ViewData["Details"] as UserViewModel;
+}
+
+<h1> @employee.Name owns this page </h1>

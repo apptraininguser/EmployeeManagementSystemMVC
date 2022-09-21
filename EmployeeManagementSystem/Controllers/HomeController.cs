@@ -20,6 +20,13 @@ namespace EmployeeManagementSystem.Controllers
 
         public IActionResult Index()
         {
+
+            // var emp = new EmployeeViewModel { Name = "nandu" };
+
+            // ViewBag.Name = new EmployeeViewModel { Name = "nandu" };
+
+            ViewData["Details"] = new EmployeeViewModel { Name = "nandu" };
+
             return View();
         }
 
