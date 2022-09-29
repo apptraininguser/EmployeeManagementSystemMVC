@@ -1,14 +1,14 @@
-﻿using EmployeeManagementSystem.Models;
-using Microsoft.Data.SqlClient;
+﻿using Microsoft.Data.SqlClient;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace EmployeeManagementSystem.Data
+namespace EmployeeApi
 {
-    public class EmployeeRepository : IEmployeeRepository
+    public class EmployeeRepository
     {
+
         private SqlConnection _sqlConnection;
 
         public EmployeeRepository()
@@ -37,7 +37,7 @@ namespace EmployeeManagementSystem.Data
                         Name = (string)sqlDataReader["Name"],
                         Age = (int)sqlDataReader["Age"],
                         Salary = (int)sqlDataReader["Salary"],
-                        CreationDate = (DateTime)sqlDataReader["CreationDate"]                        
+                        CreationDate = (DateTime)sqlDataReader["CreationDate"]
                     });
                 }
                 return listOfEmployee;
@@ -114,7 +114,7 @@ namespace EmployeeManagementSystem.Data
             }
         }
 
-        public bool UpdateEmployee(EmployeeViewModel employee,int  id)
+        public bool UpdateEmployee(EmployeeViewModel employee, int id)
         {
             try
             {
@@ -163,3 +163,4 @@ namespace EmployeeManagementSystem.Data
         }
     }
 }
+

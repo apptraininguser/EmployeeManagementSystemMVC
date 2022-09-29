@@ -49,9 +49,9 @@
                 @Html.DisplayFor(modelItem => item.CreationDate)
             </td>           
             <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "GetEmployeeById", new { id = item.Id}) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                @Html.ActionLink("Edit", "EditEmployee", new { id = item.Id }) |
+                @Html.ActionLink("Details", "GetEmployeeById", new { studentId = item.Id}) |
+                @Html.ActionLink("Delete", "DeleteEmployee", new {  id=item.Id })
             </td>
         </tr>
 }

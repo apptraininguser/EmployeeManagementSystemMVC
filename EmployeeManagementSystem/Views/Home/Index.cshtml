@@ -7,10 +7,24 @@
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
 </div>
 
-@model EmployeeManagementSystem.Models.EmployeeViewModel
+@*@model EmployeeManagementSystem.Models.EmployeeViewModel
 
-@{ 
-    var employee = ViewData["Details"] as UserViewModel;
+    @{
+        var employee = ViewData["Details"] as UserViewModel;
+    }
+
+    <h1> @employee.Name owns this page </h1>*@
+
+
+@model int
+
+@if (Model % 2 == 0)
+{
+    <div>Number is even</div>
+}
+else
+{
+    <div>Number is odd</div>
 }
 
-<h1> @employee.Name owns this page </h1>
+@await Html.PartialAsync("_employeePartialView");

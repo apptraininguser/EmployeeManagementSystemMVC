@@ -1,3 +1,5 @@
+using EmployeeManagementSystem.Data;
+using EmployeeManagementSystem.Provider;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -24,6 +26,16 @@ namespace EmployeeManagementSystem
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+
+            services.AddScoped<IEmployeeRepository, EmployeeRepository>();
+            services.AddHttpClient<IEmployeeClient, EmployeeClient>();
+          
+
+            services.AddWebOptimizer(pipeline => {
+
+                pipeline.AddCssBundle("/css/bundle.css", "css/site.css", "css/StyleSheet.css");
+                pipeline.MinifyJsFiles();
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -40,6 +52,9 @@ namespace EmployeeManagementSystem
                 app.UseHsts();
             }
             app.UseHttpsRedirection();
+
+            app.UseWebOptimizer();
+
             app.UseStaticFiles();
 
             app.UseRouting();
@@ -51,7 +66,15 @@ namespace EmployeeManagementSystem
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
-            });
+
+                //endpoints.MapControllerRoute(
+                //   name: "newemployeeurl",
+                //   pattern: "newemployeeurl/{*employee}",
+                //   defaults: new { controller = "Employee", action = "GetEmployee" }
+                //   );
+            }
+            
+            );
         }
     }
 }

@@ -25,9 +25,16 @@ namespace EmployeeManagementSystem.Controllers
 
             // ViewBag.Name = new EmployeeViewModel { Name = "nandu" };
 
-            ViewData["Details"] = new EmployeeViewModel { Name = "nandu" };
+            //ViewData["Details"] = new EmployeeViewModel { Name = "nandu" };
 
-            return View();
+
+            // return Content("This is an employee managemengt portal");
+
+            //return RedirectToAction("GetEmployee","Employee");
+
+            var values = 10;
+
+            return View(values);
         }
 
         public IActionResult Privacy()
